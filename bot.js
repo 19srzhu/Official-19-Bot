@@ -1,6 +1,6 @@
 const { Client, MessageEmbed, WebhookClient } = require("discord.js");
 const client = new Client();
-const prefix = "$";
+const prefix = "$!";
 const package = require("./package.json")
 const ownerID = { "Filip": "666734196689076285", "Octocat": "746766077123624990" }
 
@@ -23,7 +23,7 @@ client.on('message', async message => {
 
   if (message.content.startsWith(prefix + `help`)) {
     message.channel.send(new MessageEmbed()
-      .setTitle('Official Filip Bot Commands')
+      .setTitle('Official 19 Bot Commands')
       .setColor(0x000000)
       .setDescription(
       '`help` - Shows this menu.\n' +
@@ -31,25 +31,16 @@ client.on('message', async message => {
       "`join` - Join a voice channel. Make sure you're in voice channel!\n" +
       '`shutdown` - Shut down the bot. **⚠ This is owner-only command! ⚠**\n' +
       '`info` - Get info about bot\n' +
-      '`invite` - Get invite to join Official Filip Server.\n' +
+      '`invite` - Get invite to join 19 Server.\n' +
       '`eval` - Execute JavaScript code. **⚠ This is owner-only command! ⚠**'))
   };
 
   if (message.content.startsWith(prefix + `ping`)) {
     message.channel.send("🏓 Pong! Ping is: " + new Date().getTime() - message.createdTimestamp + " ms")
   }
-
-  if (message.channel.id === '735453230137606175' && !message.author.bot) {
-	  if (!message.content.startsWith('https://bonk.io/?r=') || !message.content.startsWith('http://bonk.io/?r=')
-	      || !message.content.startsWith('https://bonk2.io/beta/') || !message.content.startsWith('http://bonk2.io/beta/')) {
-		  message.delete()
-		  message.channel.send(`<@` + message.author.id + `> Do not send non-invites here!`).then(
-			  message => message.delete({ timeout: 10000 }))
-	  }
-  };
 	
   if (message.content.startsWith(prefix + 'info')) {
-      message.channel.send('Made by Filip.\n\n' +
+      message.channel.send('Made by 19srzhu.\n\n' +
                            'Server count: ' + client.guilds.cache.size)
   }
 
@@ -67,7 +58,7 @@ client.on('message', async message => {
 	  message.channel.send('Shutting down...')
 	  process.exit()
       }
-      if (message.author.id !== ownerID.Filip || message.author.id !== ownerID.Octocat) {
+      if (message.author.id !== ownerID.Filip && message.author.id !== ownerID.Octocat) {
 	      message.channel.send(`You're not bot owner!!`)
       }
   };
@@ -80,13 +71,13 @@ client.on('message', async message => {
     message.channel.send(new MessageEmbed()
       .setTitle('Official Filip Server invite')
       .setColor(0x000000)
-      .setDescription('[Join **NOW**](https://discord.gg/bhdgvJt)!'))
+      .setDescription('[Join **NOW**](https://discord.gg/ZWYymU7MBa)!'))
   };
 
   const args = message.content.split(" ").slice(1);
 
   if (message.content.startsWith(prefix + "eval")) {
-    if (message.author.id !== ownerID.Filip || message.author.id !== ownerID.Octocat) return;
+    if (message.author.id !== ownerID.Filip && message.author.id !== ownerID.Octocat) return;
     try {
       const code = args.join(" ");
       let evaled = eval(code);
