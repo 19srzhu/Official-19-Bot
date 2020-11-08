@@ -1,0 +1,62 @@
+{
+  "name": "official-19-bot",
+  "version": "0.0.0",
+  "description": "Made by `19`",
+  "keywords": [],
+  "homepage": "https://github.com/19srzhu/Official-19-Bot#readme",
+  "bugs": {
+    "url": "https://github.com/19srzhu/Official-19-Bot/issues",
+  },
+  "license": "ISC",
+  "author": "Filip <60001906+Filip000000@users.noreply.github.com>",
+  "contributors": [
+    "Filip <60001906+Filip000000@users.noreply.github.com>",
+    "19"
+  ],
+  "files": [
+    "*"
+  ],
+  "main": "bot.js",
+  "browser": "No browser requested",
+  "bin": {},
+  "man": {},
+  "directories": {
+    "lib": "",
+    "bin": "",
+    "man": "",
+    "doc": "",
+    "example": "",
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/19srzhu/Official-19-Bot.git"
+  },
+  "scripts": {},
+  "config": {},
+  "dependencies": {
+    "discord.js": "discordjs/discord.js"
+  },
+  "devDependencies": {},
+  "peerDependencies": {},
+  "bundledDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "15.0.1",
+    "npm": ">=6.14.6"
+  },
+  "os": [
+    "win32",
+    "linux",
+    "macOS"
+  ],
+  "cpu": [
+    "x32",
+    "x64",
+    "x84"
+  ],
+  "private": true,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
