@@ -12,7 +12,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: |
-
+       Remove-Item node_modules -Force -Recurse
+       Remove-Item package-lock.json -Force
        npm install
        cmd
        git config --global user.name "19srzhu"
