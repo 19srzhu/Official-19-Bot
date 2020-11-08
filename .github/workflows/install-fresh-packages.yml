@@ -16,6 +16,9 @@ jobs:
        npm install
        cmd
        git config --global user.name "19srzhu"
+       git config --global user.email "%19srzhu_email_address%"
        git add .
        git commit -m"Updated packages"
        git push
+    env:
+      19srzhu_email_address: ${{ secrets.octocat }}
