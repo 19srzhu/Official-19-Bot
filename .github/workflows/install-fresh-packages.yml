@@ -1,0 +1,22 @@
+name: Install fresh packages
+
+on:
+  schedule:
+    - cron: '30 * * * *'
+  workflow_dispatch:
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - run: |
+#       Remove-Item node_modules -Force -Recurse
+#       Remove-Item package-lock.json -Force
+       npm install
+       cmd
+       git config --global user.name "19srzhu"
+       git add .
+       git commit -m"Updated packages"
+       git push
