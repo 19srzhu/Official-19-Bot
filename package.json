@@ -1,0 +1,69 @@
+{
+  "author": "Filip <Filip000000@users.noreply.github.com>",
+  "bin": {},
+  "browser": "No browser requested",
+  "bugs": {
+    "email": "Filip000000@users.noreply.github.com",
+    "url": "https://github.com/Filip000000/Official-Filip-Bot/issues"
+  },
+  "bundledDependencies": {},
+  "config": {},
+  "contributors": [
+    "Filip <Filip000000@users.noreply.github.com>"
+  ],
+  "cpu": [
+    "x32",
+    "x64",
+    "x84"
+  ],
+  "dependencies": {
+    "@octokit/rest": "^18.0.12",
+    "discord.js": "^12.5.0",
+    "express": "^4.17.1",
+    "ms": "^2.1.2",
+    "sequelize": "^6.3.5",
+    "sqlite3": "^5.0.0"
+  },
+  "description": "Made by `Filip`",
+  "devDependencies": {
+    "eslint": "^7.13.0"
+  },
+  "directories": {
+    "bin": "",
+    "doc": "",
+    "example": "",
+    "lib": "",
+    "man": "",
+    "test": ""
+  },
+  "engines": {
+    "node": ">=12.18.3",
+    "npm": ">=6.14.6"
+  },
+  "files": [
+    "*"
+  ],
+  "homepage": "https://github.com/Filip000000/Official-Filip-Bot#readme",
+  "keywords": [],
+  "license": "ISC",
+  "main": "bot.js",
+  "man": {},
+  "name": "official-filip-bot",
+  "optionalDependencies": {},
+  "os": [
+    "linux",
+    "macOS",
+    "win32"
+  ],
+  "peerDependencies": {},
+  "private": true,
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Filip000000/Official-Filip-Bot.git"
+  },
+  "scripts": {},
+  "version": "0.0.0"
+}

@@ -1,0 +1,80 @@
+{
+  "bot": {
+    "prefix": "$"
+  },
+  "mainServer": {
+    "invite": "",
+    "name": ""
+  },
+  "owner": {
+    "Discord": {
+      "ID": "746766077123624990"
+    }
+  },
+  "shards": {
+    "config": {
+      "execArgv": [],
+      "mode": "process",
+      "respawn": true,
+      "shardArgs": []
+    },
+    "count": 1,
+    "list": [
+      0
+    ]
+  },
+  "webhooks": {
+    "restart": "769983136514834472"
+  },
+  "database": {
+    "sqlite": {
+      "options": {
+        "host": null,
+        "port": null,
+        "username": null,
+        "password": null,
+        "database": null,
+        "dialect": null,
+        "dialectModule": null,
+        "dialectModulePath": null,
+        "dialectOptions": {},
+        "storage": null,
+        "protocol": null,
+        "define": {},
+        "query": {},
+        "schema": null,
+        "set": {},
+        "sync": {},
+        "timezone": null,
+        "clientMinMessages": null,
+        "standardConformingStrings": null,
+        "logging": null,
+        "benchmark": null,
+        "omitNull": null,
+        "native": null,
+        "replication": null,
+        "pool": {
+          "max": null,
+          "min": null,
+          "idle": null,
+          "acquire": null,
+          "evict": null,
+          "validate": null,
+          "maxUses": null
+        },
+        "quoteIdentifiers": null,
+        "transactionType": null,
+        "isolationLevel": null,
+        "retry": {
+          "match": "null",
+          "max": null
+        },
+        "typeValidation": null,
+        "operatorsAliases": {},
+        "hooks": {},
+        "minifyAliases": null,
+        "logQueryParameters": null
+      }
+    }
+  }
+}
