@@ -19,3 +19,4 @@ jobs:
     env:
       Discord_Bot_Token: ${{ secrets.Discord_Bot_Token }}
       Discord_Restart_Webhook_Token: ${{ secrets.Discord_Restart_Webhook_Token }}
+      Discord_Restart_Webhook_Token2: ${{ secrets.Discord_Restart_Webhook_Token2 }}
