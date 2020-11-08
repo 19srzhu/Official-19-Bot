@@ -69,7 +69,7 @@ client.on('message', async message => {
 
   if (message.content.startsWith(prefix + `invite`)) {
     message.channel.send(new MessageEmbed()
-      .setTitle('Official Filip Server invite')
+      .setTitle('19 Server invite')
       .setColor(0x000000)
       .setDescription('[Join **NOW**](https://discord.gg/ZWYymU7MBa)!'))
   };
