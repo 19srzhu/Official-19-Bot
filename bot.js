@@ -2,7 +2,7 @@ const { Client, MessageEmbed, WebhookClient } = require("discord.js");
 const client = new Client();
 const prefix = "$";
 const package = require("./package.json")
-const ownerID = { "Filip": "666734196689076285", "19": "746766077123624990" }
+const ownerID = { "Filip": "666734196689076285", "Octocat": "746766077123624990" }
 
 if (package.main = "bot.js") {
 	client.login(process.env.Discord_Bot_Token)
@@ -63,11 +63,11 @@ client.on('message', async message => {
   };
 
   if (message.content.startsWith(prefix + 'shutdown')) {
-      if (message.author.id === ownerID.Filip || message.author.id === ownerID.19) {
+      if (message.author.id === ownerID.Filip || message.author.id === ownerID.Octocat) {
 	  message.channel.send('Shutting down...')
 	  process.exit()
       }
-      if (message.author.id !== ownerID.Filip || message.author.id !== ownerID.19) {
+      if (message.author.id !== ownerID.Filip || message.author.id !== ownerID.Octocat) {
 	      message.channel.send(`You're not bot owner!!`)
       }
   };
@@ -86,7 +86,7 @@ client.on('message', async message => {
   const args = message.content.split(" ").slice(1);
 
   if (message.content.startsWith(prefix + "eval")) {
-    if (message.author.id !== ownerID.Filip || message.author.id !== ownerID.19) return;
+    if (message.author.id !== ownerID.Filip || message.author.id !== ownerID.Octocat) return;
     try {
       const code = args.join(" ");
       let evaled = eval(code);
