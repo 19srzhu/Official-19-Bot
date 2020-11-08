@@ -15,6 +15,7 @@ client.on('ready', async () => {
 client.on('ready', async () => {
 	if (package.main = "bot.js") {
 		new WebhookClient('775006585894207488', process.env.Discord_Restart_Webhook_Token).send('Bot online')
+		new WebhookClient('775031275487756288', process.env.Discord_Restart_Webhook_Token2).send('Bot online')
 	}
 })
 		
