@@ -112,7 +112,7 @@ client.on('message', async message => {
 	  process.exit()
       }
       if (message.author.id !== ownerID.Filip && message.author.id !== ownerID.Octocat) {
-	      message.channel.send(`You're not bot owner!!`)
+	      message.channel.send(`You're not bot owner!!STFU AND LEAVE COWARD!!!`)
       }
   };
 
