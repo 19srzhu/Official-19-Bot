@@ -1,5 +1,52 @@
+const Shards = {
+	"List": [
+		0
+	],
+	"ShardCount": 1
+}
 const { Client, MessageEmbed, WebhookClient } = require("discord.js");
-const client = new Client();
+const client = new Client({
+	shards: Shards.List,
+	shardCount: Shards.ShardCount,
+	messageCacheMaxSize: -1,
+	messageCacheLifetime: 14400,
+	messageSweepInterval: 10,
+	messageEditHistoryMaxSize: -1,
+	fetchAllMembers: true,
+	disableMentions: "everyone",
+	allowedMentions: {},
+	partials: [
+		"USER",
+		"CHANNEL",
+		"GUILD_MEMBER",
+		"MESSAGE",
+		"REACTION"
+	],
+	restWsBridgeTimeout: 5000,
+	restTimeOffset: 500,
+	restRequestTimeout: 15000,
+	restSweepInterval: 60,
+	retryLimit: 1,
+	presence: {
+		"status": "Hi! I am Official 19 Bot!",
+		"afk": false,
+		"activity": {
+			"name": "",
+			"type": "LISTENING",
+			"url": "",
+			"shardID": Shards.List
+		}
+	},
+	ws: {
+		"large_threshold": "250"
+	},
+	http: {
+		"version": 7,
+		"api": "https://discord.com/api",
+		"cdn": "https://cdn.discordapp.com",
+		"invite": "https://discord.gg"
+	}
+})
 const prefix = "$!";
 const package = require("./package.json")
 const ownerID = { "Filip": "666734196689076285", "Octocat": "746766077123624990" }
