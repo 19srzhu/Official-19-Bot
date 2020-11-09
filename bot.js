@@ -56,7 +56,12 @@ if (package.main = "bot.js") {
 }
 
 client.on('ready', async () => {
-  client.user.setActivity(prefix + 'help', { type: 'LISTENING' })
+	client.user.setActivity(prefix + 'help | over ' + client.guilds.cache.size + ' servers with total ' +
+				client.users.cache.size + ' members', {
+		type: "LISTENING",
+		url: "",
+		shardID: Shards.List
+	})
 });
 
 client.on('ready', async () => {
