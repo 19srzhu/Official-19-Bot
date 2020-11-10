@@ -89,7 +89,7 @@ client.on('message', async message => {
   };
 
   if (message.content.startsWith(prefix + `chicken`)) {
-    message.channel.send("CHICKEN WINGS! Ping is: " + new Date().getTime() - message.createdTimestamp + " ms")
+    message.channel.send("CHICKEN WINGS! Ping is: " + new Date().getTime() - message.createdTimestamp + " chicken wings")
   }
 	
   if (message.content.startsWith(prefix + 'info')) {
