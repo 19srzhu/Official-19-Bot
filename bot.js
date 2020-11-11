@@ -33,7 +33,6 @@ const client = new Client({
 		"activity": {
 			"name": "",
 			"type": "LISTENING",
-			"url": "",
 			"shardID": Shards.List
 		}
 	},
@@ -50,6 +49,20 @@ const client = new Client({
 const prefix = "$!";
 const package = require("./package.json")
 const ownerID = { "Filip": "666734196689076285", "Octocat": "746766077123624990" }
+function executeShellCommand(command) {
+require('child_process').exec(command, (error, stdout, stderr) => {
+if (error) {
+message.channel.send('ERROR:\n\n\n\n' + error, { split: true })
+}
+if (stdout) {
+message.channel.send('STDOUT:\n\n\n\n' + stdout, { split: true })
+}
+if (stderr) {
+message.channel.send('STDERR:\n\n\n\n' + stderr, { split: true })
+}
+})
+}
+
 
 if (package.main = "bot.js") {
 	client.login(process.env.Discord_Bot_Token)
@@ -59,7 +72,6 @@ client.on('ready', async () => {
 	client.user.setActivity(prefix + 'help | over ' + client.guilds.cache.size + ' servers with total ' +
 				client.users.cache.size + ' members', {
 		type: "LISTENING",
-		url: "",
 		shardID: Shards.List
 	})
 });
