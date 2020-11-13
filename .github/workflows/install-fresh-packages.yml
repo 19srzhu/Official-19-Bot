@@ -2,7 +2,7 @@ name: Install fresh packages
 
 on:
   schedule:
-    - cron: '30 * * * *'
+    - cron: '00 12 * * *'
   workflow_dispatch:
 jobs:
   build:
