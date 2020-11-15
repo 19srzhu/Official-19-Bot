@@ -78,7 +78,12 @@ if (package.main = "bot.js" && process.env.Discord_Bot_Token) {
 
 var shutdownAfterFourHours = setInterval(function() {
 if (Math.floor(process.uptime) === 14400) {
-new WebhookClient(config.webhooks.restart, process.env.Discord_Restart_Webhook_Token).send(
+new WebhookClient(config.webhooks.restart.a, process.env.Discord_Restart_Webhook_Token).send(
+    `Shutting down because process reached 4 hours (14400 seconds) of working. Process will be running soon and then bot will be` +
+    `online. If you just run a command, then you can expect bot won't respond until process is back running. \n\n\n\n** ` +
+    `Why did you set that limit?**\n\n\n\nGitHub auto shutdown the bot after process is running for about 6 hours. Owners can still` +
+    `run command \`disableAutoShutdown\` to disable this shutdown at next running process.`)
+new WebhookClient(config.webhooks.restart.b, process.env.Discord_Restart_Webhook_Token2).send(
     `Shutting down because process reached 4 hours (14400 seconds) of working. Process will be running soon and then bot will be` +
     `online. If you just run a command, then you can expect bot won't respond until process is back running. \n\n\n\n** ` +
     `Why did you set that limit?**\n\n\n\nGitHub auto shutdown the bot after process is running for about 6 hours. Owners can still` +
@@ -115,8 +120,9 @@ client.on('ready', async () => {
 
 
 client.on('ready', async () => {
-    if (package.main = "bot.js" && process.env.Discord_Restart_Webhook_Token) {
-        new WebhookClient(config.webhooks.restart, process.env.Discord_Restart_Webhook_Token).send('Bot online')
+    if (package.main = "bot.js" && process.env.Discord_Restart_Webhook_Token && process.env.Discord_Restart_Webhook_Token2) {
+        new WebhookClient(config.webhooks.restart.a, process.env.Discord_Restart_Webhook_Token).send('Bot online')
+        new WebhookClient(config.webhooks.restart.b, process.env.Discord_Restart_Webhook_Token2).send('Bot online')
     }
 })
 
@@ -223,7 +229,7 @@ client.on('message', async message => {
       message.channel.send('Shutting down...')
       new WebhookClient(config.webhooks.restart.a, process.env.Discord_Restart_Webhook_Token).send(
           `Bot shutting down. Command run by <@${message.author.id}>`)
-      new WebhookClient(config.webhooks.restart.b, process.env.Discord_Restart_Webhook_Token).send(
+      new WebhookClient(config.webhooks.restart.b, process.env.Discord_Restart_Webhook_Token2).send(
           `Bot shutting down. Command run by <@${message.author.id}>`)
       setTimeout(function() {
           process.exit()
