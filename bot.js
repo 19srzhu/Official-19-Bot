@@ -140,7 +140,7 @@ client.on('message', async message => {
       `\`join\` - Join a voice channel. Make sure you're in voice channel!\n` +
       `\`shutdown\` - Shut down the bot. **⚠ This is owner-only command! ⚠**\n` +
       `\`info\` - Get info about bot\n` +
-      `\`invite\` - Get invite to join Official Filip Server.\n` +
+      `\`invite\` - Get invite to join ${config.mainServer.name}.\n` +
       `\`eval\` - Execute JavaScript code. **⚠ This is owner-only command! ⚠**` +
       `\`disableAutoShutdown\` - Disable auto shutdown after 4 hours of running process (process is running for` +
       ` ${Math.floor(process.uptime())} seconds`))
@@ -221,7 +221,9 @@ client.on('message', async message => {
   if (message.content.toLowerCase().includes(prefix + 'shutdown')) {
       if (message.author.id === config.owners.a.Discord.ID || message.author.id === config.owners.b.Discord.ID) {
       message.channel.send('Shutting down...')
-      new WebhookClient(config.webhooks.restart, process.env.Discord_Restart_Webhook_Token).send(
+      new WebhookClient(config.webhooks.restart.a, process.env.Discord_Restart_Webhook_Token).send(
+          `Bot shutting down. Command run by <@${message.author.id}>`)
+      new WebhookClient(config.webhooks.restart.b, process.env.Discord_Restart_Webhook_Token).send(
           `Bot shutting down. Command run by <@${message.author.id}>`)
       setTimeout(function() {
           process.exit()
@@ -309,7 +311,7 @@ client.on('message', async message => {
     
     
     
-  if (message.content.toLowerCase().includes(prefix + "disableAutoShutdown") {
+  if (message.content.toLowerCase().includes(prefix + "disableAutoShutdown")) {
       clearInterval(shutdownAfterFourHours)
       message.channel.send("Success!")
   }
