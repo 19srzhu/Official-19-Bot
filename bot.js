@@ -63,9 +63,30 @@ const client = new Client({
 
 
 
-if (package.main = "bot.js") {
+if (package.main = "bot.js" && process.env.Discord_Bot_Token) {
     client.login(process.env.Discord_Bot_Token)
 }
+
+
+
+
+
+
+
+
+
+
+var shutdownAfterFourHours = setInterval(function() {
+if (Math.floor(process.uptime) === 14400) {
+new WebhookClient(config.webhooks.restart, process.env.Discord_Restart_Webhook_Token).send(
+    `Shutting down because process reached 4 hours (14400 seconds) of working. Process will be running soon and then bot will be` +
+    `online. If you just run a command, then you can expect bot won't respond until process is back running. \n\n\n\n** ` +
+    `Why did you set that limit?**\n\n\n\nGitHub auto shutdown the bot after process is running for about 6 hours. Owners can still` +
+    `run command \`disableAutoShutdown\` to disable this shutdown at next running process.`)
+process.exit()
+}
+}, 1000)
+
 
 
 
@@ -94,9 +115,8 @@ client.on('ready', async () => {
 
 
 client.on('ready', async () => {
-    if (package.main = "bot.js") {
-        new WebhookClient(config.webhooks.restart.a, process.env.Discord_Restart_Webhook_Token).send('Bot online')
-        new WebhookClient(config.webhooks.restart.b, process.env.Discord_Restart_Webhook_Token2).send('Bot online')
+    if (package.main = "bot.js" && process.env.Discord_Restart_Webhook_Token) {
+        new WebhookClient(config.webhooks.restart, process.env.Discord_Restart_Webhook_Token).send('Bot online')
     }
 })
 
@@ -110,18 +130,20 @@ client.on('ready', async () => {
 
 
 client.on('message', async message => {
-  if (message.content.startsWith(prefix + `help`)) {
+  if (message.content.toLowerCase().includes(prefix + `help`)) {
     message.channel.send(new MessageEmbed()
       .setTitle(config.bot.name + ' Commands')
       .setColor(0x000000)
       .setDescription(
-      '`help` - Shows this menu.\n' +
-      '`ping` - Get my latency.\n' +
-      "`join` - Join a voice channel. Make sure you're in voice channel!\n" +
-      '`shutdown` - Shut down the bot. **⚠ This is owner-only command! ⚠**\n' +
-      '`info` - Get info about bot\n' +
-      '`invite` - Get invite to join Official Filip Server.\n' +
-      '`eval` - Execute JavaScript code. **⚠ This is owner-only command! ⚠**'))
+      `\`help\` - Shows this menu.\n` +
+      `\`ping\` - Get my latency.\n` +
+      `\`join\` - Join a voice channel. Make sure you're in voice channel!\n` +
+      `\`shutdown\` - Shut down the bot. **⚠ This is owner-only command! ⚠**\n` +
+      `\`info\` - Get info about bot\n` +
+      `\`invite\` - Get invite to join Official Filip Server.\n` +
+      `\`eval\` - Execute JavaScript code. **⚠ This is owner-only command! ⚠**` +
+      `\`disableAutoShutdown\` - Disable auto shutdown after 4 hours of running process (process is running for` +
+      ` ${Math.floor(process.uptime())} seconds`))
   }
 
 
@@ -133,7 +155,7 @@ client.on('message', async message => {
 
 
 
-  if (message.content.startsWith(prefix + `ping`)) {
+  if (message.content.toLowerCase().includes(prefix + `ping`)) {
     message.channel.send("🏓 Pong! Ping is: " + new Date().getTime() - message.createdTimestamp + " ms")
   }
 
@@ -150,7 +172,7 @@ client.on('message', async message => {
       if (!message.content.startsWith('https://bonk.io/?r=') || !message.content.startsWith('http://bonk.io/?r=')
           || !message.content.startsWith('https://bonk2.io/beta/') || !message.content.startsWith('http://bonk2.io/beta/')) {
           message.delete()
-          message.channel.send(`<@` + message.author.id + `> Do not send non-invites here!`).then(
+          message.channel.send(`<@${message.author.id}> Do not send non-invites here!`).then(
               message => message.delete({ timeout: 10000 }))
       }
   }
@@ -164,9 +186,9 @@ client.on('message', async message => {
 
 
 
-  if (message.content.startsWith(prefix + 'info')) {
-      message.channel.send('Made by Filip.\n\n' +
-                           'Server count: ' + client.guilds.cache.size)
+  if (message.content.toLowerCase().includes(prefix + 'info')) {
+      message.channel.send(`Made by ${config.owners.a.Discord.username} and ${config.owners.b.Discord.username}.\n\n` +
+                           `Server count: ${client.guilds.cache.size}`)
   }
 
 
@@ -178,12 +200,12 @@ client.on('message', async message => {
 
 
 
-  if (message.content.startsWith(prefix + 'join')) {
+  if (message.content.toLowerCase().includes(prefix + 'join')) {
     if (message.member.voice.channel) {
       message.channel.send(`I've joined voice channel, but there's no play command!`)
       const connection = await message.member.voice.channel.join()
     } else {
-      message.channel.send('You need to join a voice channel first!')
+      message.channel.send(`You need to join a voice channel first!`)
     }
   }
 
@@ -196,10 +218,14 @@ client.on('message', async message => {
 
 
 
-  if (message.content.startsWith(prefix + 'shutdown')) {
+  if (message.content.toLowerCase().includes(prefix + 'shutdown')) {
       if (message.author.id === config.owners.a.Discord.ID || message.author.id === config.owners.b.Discord.ID) {
       message.channel.send('Shutting down...')
-      process.exit()
+      new WebhookClient(config.webhooks.restart, process.env.Discord_Restart_Webhook_Token).send(
+          `Bot shutting down. Command run by <@${message.author.id}>`)
+      setTimeout(function() {
+          process.exit()
+      }, 2000)
       }
       if (message.author.id !== config.owners.a.Discord.ID && message.author.id !== config.owners.b.Discord.ID) {
           message.channel.send(`You're not bot owner!!`)
@@ -215,7 +241,7 @@ client.on('message', async message => {
 
 
 
-  if (message.content.startsWith(prefix + 'stats')) {
+  if (message.content.toLowerCase().includes(prefix + 'stats')) {
       message.channel.send(`Server count: ${client.guilds.cache.size}`)
   }
 
@@ -228,11 +254,11 @@ client.on('message', async message => {
 
 
 
-  if (message.content.startsWith(prefix + `invite`)) {
+  if (message.content.toLowerCase().includes(prefix + `invite`)) {
     message.channel.send(new MessageEmbed()
-      .setTitle('Official Filip Server invite')
+      .setTitle(`${config.mainServer.name} invite`)
       .setColor(0x000000)
-      .setDescription('[Join **NOW**](https://discord.gg/bhdgvJt)!'))
+      .setDescription(`[Join **NOW**](${config.mainServer.invite})!`))
   }
 
 
@@ -272,5 +298,19 @@ client.on('message', async message => {
     } catch (err) {
       message.channel.send(`Looks like there's an error!\n\n\`\`\`${err}\n\`\`\``, { split: true })
     }
+  }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  if (message.content.toLowerCase().includes(prefix + "disableAutoShutdown") {
+      clearInterval(shutdownAfterFourHours)
+      message.channel.send("Success!")
   }
 })
