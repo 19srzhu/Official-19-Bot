@@ -4,6 +4,10 @@
 		"name": "Official 19 Bot",
 		"prefix": "$!"
 	},
+	"mainServer": {
+		"invite": "https://discord.gg/ZWYymU7MBa",
+		"name": "19 server"
+	},
 	"owners": {
 		"a": {
 			"Discord": {
