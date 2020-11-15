@@ -1,17 +1,17 @@
 {
-  "name": "official-19-bot",
+  "name": "official-filip-bot",
   "version": "0.0.0",
-  "description": "Made by `19`",
+  "description": "Made by `Filip`",
   "keywords": [],
-  "homepage": "https://github.com/19srzhu/Official-19-Bot#readme",
+  "homepage": "https://github.com/Filip000000/Official-Filip-Bot#readme",
   "bugs": {
-    "url": "https://github.com/19srzhu/Official-19-Bot/issues"
+    "url": "https://github.com/Filip000000/Official-Filip-Bot/issues",
+    "email": "60001906+Filip000000@users.noreply.github.com"
   },
   "license": "ISC",
   "author": "Filip <60001906+Filip000000@users.noreply.github.com>",
   "contributors": [
-    "Filip <60001906+Filip000000@users.noreply.github.com>",
-    "19"
+    "Filip <60001906+Filip000000@users.noreply.github.com>"
   ],
   "files": [
     "*"
@@ -30,19 +30,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/19srzhu/Official-19-Bot.git"
+    "url": "https://github.com/Filip000000/Official-Filip-Bot.git"
   },
   "scripts": {},
   "config": {},
   "dependencies": {
-    "discord.js": "discordjs/discord.js"
+    "discord.js": "^12.4.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^7.13.0"
+  },
   "peerDependencies": {},
   "bundledDependencies": {},
   "optionalDependencies": {},
   "engines": {
-    "node": "15.0.1",
+    "node": ">=12.18.3",
     "npm": ">=6.14.6"
   },
   "os": [
