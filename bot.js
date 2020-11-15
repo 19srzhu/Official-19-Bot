@@ -95,7 +95,8 @@ client.on('ready', async () => {
 
 client.on('ready', async () => {
     if (package.main = "bot.js") {
-        new WebhookClient(config.webhooks.restart, process.env.Discord_Restart_Webhook_Token).send('Bot online')
+        new WebhookClient(config.webhooks.restart.a, process.env.Discord_Restart_Webhook_Token).send('Bot online')
+        new WebhookClient(config.webhooks.restart.b, process.env.Discord_Restart_Webhook_Token2).send('Bot online')
     }
 })
 
@@ -145,7 +146,7 @@ client.on('message', async message => {
 
 
 
-  if (message.channel.id === '735453230137606175' && !message.author.bot) {
+  if (message.channel.id === '735453230137606175' && !message.author.bot && config.bot.ID === "774591139093151774") {
       if (!message.content.startsWith('https://bonk.io/?r=') || !message.content.startsWith('http://bonk.io/?r=')
           || !message.content.startsWith('https://bonk2.io/beta/') || !message.content.startsWith('http://bonk2.io/beta/')) {
           message.delete()
