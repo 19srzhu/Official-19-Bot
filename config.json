@@ -1,0 +1,37 @@
+{
+	"bot": {
+		"ID": "774678135106568193",
+		"name": "Official 19 Bot",
+		"prefix": "$!"
+	},
+	"owners": {
+		"a": {
+			"Discord": {
+				"ID": "666734196689076285",
+				"username": "Filip"
+			}
+		},
+		"b": {
+			"Discord": {
+				"ID": "746766077123624990",
+				"username": "19srzhu"
+			}
+		}
+	},
+	"shards": {
+		"config": {
+			"execArgv": [],
+			"mode": "process",
+			"respawn": true,
+			"shardArgs": []
+		},
+		"count": 1,
+		"list": [0]
+	},
+	"webhooks": {
+		"restart": {
+			"a": "775006585894207488",
+			"b": "775031275487756288"
+		}
+	}
+}
