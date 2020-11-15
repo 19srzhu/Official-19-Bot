@@ -147,7 +147,7 @@ client.on('message', async message => {
       `\`shutdown\` - Shut down the bot. **⚠ This is owner-only command! ⚠**\n` +
       `\`info\` - Get info about bot\n` +
       `\`invite\` - Get invite to join ${config.mainServer.name}.\n` +
-      `\`eval\` - Execute JavaScript code. **⚠ This is owner-only command! ⚠**` +
+      `\`eval\` - Execute JavaScript code. **⚠ This is owner-only command! ⚠**\n` +
       `\`disableAutoShutdown\` - Disable auto shutdown after 4 hours of running process (process is running for` +
       ` ${Math.floor(process.uptime())} seconds`))
   }
