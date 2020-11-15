@@ -3,7 +3,7 @@ name: Node.js CI
 on:
   workflow_dispatch:
   schedule:
-    - cron: "30 0,6,12,18 * * *"
+    - cron: "00 0,4,8,12,16,20 * * *"
 jobs:
   build:
 
