@@ -5,7 +5,7 @@ on:
     - cron: '00 12 * * *'
   workflow_dispatch:
 jobs:
-  build:
+  update:
 
     runs-on: windows-latest
 
@@ -15,11 +15,8 @@ jobs:
        Remove-Item node_modules -Force -Recurse
        Remove-Item package-lock.json -Force
        npm install
-       cmd
+       git config --global user.email "19srzhu@users.noreply.github.com"
        git config --global user.name "19srzhu"
-       git config --global user.email "%19srzhu_email_address%"
        git add .
-       git commit -m"Updated packages"
+       git commit -m"Update packages"
        git push
-    env:
-      19srzhu_email_address: ${{ secrets.octocat }}
