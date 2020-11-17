@@ -149,6 +149,7 @@ client.on('message', async message => {
         `\`eval\` - Execute JavaScript code. **⚠ This is owner-only command! ⚠**\n` +
         `\`uptime\` - View how long bot is running.\n` +
         `\`version\` - View bot version`))
+        `\`pancake\` - shows a pancake gif. **this command is under development**
   }
 
 
