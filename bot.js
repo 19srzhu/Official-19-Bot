@@ -78,7 +78,8 @@ const client = new Client({
 
 
 
-if (package.main = "bot.js" && process.env.Discord_Bot_Token) {
+if (package.main = "bot.js"
+&& process.env.Discord_Bot_Token) {
   client.login(process.env.Discord_Bot_Token)
 }
 
@@ -109,8 +110,11 @@ client.on('ready', async () => {
 
 
 client.on('ready', async () => {
-  if (package.main = "bot.js" && process.env.Discord_Restart_Webhook_Token) {
-    new WebhookClient(config.webhooks.restart, process.env.Discord_Restart_Webhook_Token).send('Bot online')
+  if (package.main = "bot.js"
+  && process.env.Discord_Restart_Webhook_Token
+  && process.env.Discord_Restart_Webhook_Token2) {
+    new WebhookClient(config.webhooks.restart.a, process.env.Discord_Restart_Webhook_Token).send('Bot online')
+    new WebhookClient(config.webhooks.restart.b, process.env.Discord_Restart_Webhook_Token2).send('Bot online')
   }
 })
 
@@ -148,8 +152,8 @@ client.on('message', async message => {
         `\`invite\` - Get invite to join ${config.mainServer.name}.\n` +
         `\`eval\` - Execute JavaScript code. **⚠ This is owner-only command! ⚠**\n` +
         `\`uptime\` - View how long bot is running.\n` +
-        `\`version\` - View bot version`))
-        `\`pancake\` - shows a pancake gif. **this command is under development**
+        `\`version\` - View bot version\n` +
+        `\`pancake\` - Shows a pancake gif. **This command is under development!**`))
   }
 
 
@@ -229,11 +233,15 @@ client.on('message', async message => {
 
 
 
-  if (message.content.toLowerCase().includes(prefix + 'shutdown')) {
+  if (message.content.toLowerCase().includes(prefix + 'shutdown')
+  && process.env.Discord_Restart_Webhook_Token
+  && process.env.Discord_Restart_Webhook_Token2) {
     if (message.author.id === config.owners.a.Discord.ID
     || message.author.id === config.owners.b.Discord.ID) {
       message.channel.send('Shutting down...')
-      new WebhookClient(config.webhooks.restart, process.env.Discord_Restart_Webhook_Token).send(
+      new WebhookClient(config.webhooks.restart.a, process.env.Discord_Restart_Webhook_Token).send(
+        `Bot shutting down. Command run by <@${message.author.id}>`)
+      new WebhookClient(config.webhooks.restart.b, process.env.Discord_Restart_Webhook_Token2).send(
         `Bot shutting down. Command run by <@${message.author.id}>`)
       setTimeout(function() {
         process.exit()
@@ -347,5 +355,19 @@ client.on('message', async message => {
 
   if (message.content.toLowerCase().includes(prefix + "version")) {
     message.channel.send("Version: " + package.version)
+  }
+
+
+
+
+
+
+
+
+
+
+  if (message.content.toLowerCase().includes(prefix + "pancake")) {
+    // Command code will go here!
+    message.channel.send("Command under development! Wait some time before we make it.")
   }
 })

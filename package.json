@@ -18,9 +18,12 @@
     "x84"
   ],
   "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "@replit/database": "^2.0.0",
     "bufferutil": "^4.0.2",
     "chalk": "^4.1.0",
     "common-tags": "^1.8.0",
+    "config.json": "github:npm/security-holder",
     "discord.js": "^12.4.1",
     "erlpack": "github:discord/erlpack",
     "express": "^4.17.1",
