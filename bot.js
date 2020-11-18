@@ -367,7 +367,7 @@ client.on('message', async message => {
 
 
   if (message.content.toLowerCase().includes(prefix + "pancake")) {
-    // Command code will go here!
+    // https://tenor.com/view/warrior-cats-warrior-waffle-time-waffle-warriors-gif-19069513  //
     message.channel.send("Command under development! Wait some time before we make it.")
   }
 })
