@@ -153,7 +153,7 @@ client.on('message', async message => {
         `\`eval\` - Execute JavaScript code. **⚠ This is owner-only command! ⚠**\n` +
         `\`uptime\` - View how long bot is running.\n` +
         `\`version\` - View bot version\n` +
-        `\`pancake\` - Shows a pancake gif. **This command is under development!**`))
+        `\`waffle\` - Shows a waffle gif. **This command is under development!**`))
   }
 
 
@@ -366,7 +366,7 @@ client.on('message', async message => {
 
 
 
-  if (message.content.toLowerCase().includes(prefix + "pancake")) {
+  if (message.content.toLowerCase().includes(prefix + "waffle")) {
     // https://tenor.com/view/warrior-cats-warrior-waffle-time-waffle-warriors-gif-19069513  //
     message.channel.send("Command under development! Wait some time before we make it.")
   }
