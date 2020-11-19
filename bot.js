@@ -154,6 +154,7 @@ client.on('message', async message => {
         `\`uptime\` - View how long bot is running.\n` +
         `\`version\` - View bot version\n` +
         `\`waffle\` - Shows a waffle gif. **This command is under development!**`))
+        `\`w\` - w **this does not need prefix!Just say w**
   }
 
 
@@ -369,4 +370,10 @@ client.on('message', async message => {
   if (message.content.toLowerCase().includes(prefix + "waffle")) {
     message.channel.send("https://tenor.com/view/warrior-cats-warrior-waffle-time-waffle-warriors-gif-19069513")
   }
+})
+
+
+if (message.content.tolowercase().includes (w))  {
+  message.channel.send("w")
+}
 })
