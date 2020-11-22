@@ -31,8 +31,8 @@ const client = new Client({
   shards: config.shards.list,
   shardCount: config.shards.count,
   messageCacheMaxSize: -1,
-  messageCacheLifetime: 14400,
-  messageSweepInterval: 10,
+  messageCacheLifetime: 172800,
+  messageSweepInterval: 3600,
   messageEditHistoryMaxSize: -1,
   fetchAllMembers: true,
   disableMentions: "everyone",
@@ -78,7 +78,7 @@ const client = new Client({
 
 
 
-if (package.main = "bot.js"
+if (package.main === "bot.js"
 && process.env.Discord_Bot_Token) {
   client.login(process.env.Discord_Bot_Token)
 }
@@ -110,7 +110,7 @@ client.on('ready', async () => {
 
 
 client.on('ready', async () => {
-  if (package.main = "bot.js"
+  if (package.main === "bot.js"
   && process.env.Discord_Restart_Webhook_Token
   && process.env.Discord_Restart_Webhook_Token2) {
     new WebhookClient(config.webhooks.restart.a, process.env.Discord_Restart_Webhook_Token).send('Bot online')
@@ -153,8 +153,8 @@ client.on('message', async message => {
         `\`eval\` - Execute JavaScript code. **⚠ This is owner-only command! ⚠**\n` +
         `\`uptime\` - View how long bot is running.\n` +
         `\`version\` - View bot version\n` +
-        `\`waffle\` - Shows a waffle gif. **This command is under development!**`))
-        `\`w\` - w **this does not need prefix!Just say w**
+        `\`waffle\` - Shows a waffle gif.\n` +
+        `\`w\` - Spam command, use without prefix.`))
   }
 
 
@@ -168,28 +168,6 @@ client.on('message', async message => {
 
   if (message.content.toLowerCase().includes(prefix + `ping`)) {
     message.channel.send("🏓 Pong! Ping is: " + new Date().getTime() - message.createdTimestamp + " ms")
-  }
-
-
-
-
-
-
-
-
-
-
-  if (message.channel.id === '735453230137606175'
-  && !message.author.bot
-  && config.bot.ID === "774591139093151774") {
-    if (!message.content.startsWith('https://bonk.io/?r=')
-    || !message.content.startsWith('http://bonk.io/?r=')
-    || !message.content.startsWith('https://bonk2.io/beta/')
-    || !message.content.startsWith('http://bonk2.io/beta/')) {
-      message.delete()
-      message.channel.send(`<@${message.author.id}> Do not send non-invites here!`).then(
-        message => message.delete({ timeout: 10000 }))
-    }
   }
 
 
@@ -370,10 +348,41 @@ client.on('message', async message => {
   if (message.content.toLowerCase().includes(prefix + "waffle")) {
     message.channel.send("https://tenor.com/view/warrior-cats-warrior-waffle-time-waffle-warriors-gif-19069513")
   }
+
+
+
+
+
+
+
+
+
+  if (message.content.toLowerCase().includes("w") && message.channel.name === "spam") {
+    var Spam = setInterval(function() {
+      message.channel.send("w")
+    }, 1000)
+    setTimeout(function() {
+      clearInterval(Spam)
+    }, 20000)
+  }
 })
 
 
-if (message.content.tolowercase().includes (w))  {
-  message.channel.send("w")
-}
+
+
+
+
+
+
+
+
+client.on('messageDelete', async message => {
+  client.channels.cache.get("779764436733919323").send(
+    `------------------------DELETED MESSAGE------------------------\n` +
+    `Bot: ${message.author.bot}\n` +
+    `Author: ${message.author.username}#${message.author.discriminator}\n` +
+    `Content: ${message.content}\n` +
+    `Channel: ${message.channel.name}\n` +
+    `Server: ${message.guild.name}\n\n\n\n** **`
+  )
 })
