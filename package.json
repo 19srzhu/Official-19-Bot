@@ -24,7 +24,7 @@
     "chalk": "^4.1.0",
     "common-tags": "^1.8.0",
     "config.json": "github:npm/security-holder",
-    "discord.js": "^12.4.1",
+    "discord.js": "^12.5.0",
     "erlpack": "github:discord/erlpack",
     "express": "^4.17.1",
     "libsodium": "^0.7.8",
