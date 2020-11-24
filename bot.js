@@ -173,7 +173,6 @@ client.on("message", async message => {
         "`uptime` - View how long bot is running.\n" +
         "`version` - View bot version\n" +
         "`waffle` - Shows a waffle gif.\n" +
-        "`w` - Spam command, use without prefix.\n"))
     }
 
 
@@ -377,13 +376,7 @@ client.on("message", async message => {
 
 
 
-    if (message.content.toLowerCase().includes("w") && message.channel.name === "spam") {
-        message.channel.send("w")
-    }
-})
-
-
-
+   
 
 
 
