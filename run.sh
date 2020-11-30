@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# Traps:
+trap "echo" 1 2 9 15
+trap "echo" HUP INT KILL TERM
 
 echo "Enter password:"
-read -r EnteredPassword
-if [ "$EnteredPassword" = "$Password" ]
+read -r -s EnteredPassword
+if [ "$EnteredPassword" = "$Password" ] && [ "$EnteredPassword" != "" ]
   then
 
     clear

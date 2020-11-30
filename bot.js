@@ -112,9 +112,7 @@ client.on("ready", async () => {
 
 
 client.on("ready", async () => {
-    if (package.main === "bot.js"
-    && process.env.Discord_Restart_Webhook_Token
-    && process.env.Discord_Restart_Webhook_Token2) {
+    if (package.main === "bot.js" && process.env.Discord_Restart_Webhook_Token && process.env.Discord_Restart_Webhook_Token2) {
         new WebhookClient(config.webhooks.restart.a, process.env.Discord_Restart_Webhook_Token).send("Bot online")
         new WebhookClient(config.webhooks.restart.b, process.env.Discord_Restart_Webhook_Token2).send("Bot online")
     }
@@ -130,8 +128,7 @@ client.on("ready", async () => {
 
 
 client.on("message", async message => {
-    if (!message.content.startsWith("$")
-    || message.content.startsWith("w")) return
+    if (!message.content.startsWith("$") || message.content.startsWith("w")) return
 
 
 
@@ -162,18 +159,17 @@ client.on("message", async message => {
         message.channel.send(new MessageEmbed()
             .setTitle(config.bot.name + " Commands")
             .setColor(0x000000)
-            .setDescription(
-                "`help` - Shows this menu.\n" +
-        "`ping` - Get my latency.\n" +
-        "`join` - Join a voice channel. Make sure you're in voice channel!\n" +
-        "`shutdown` - Shut down the bot. **⚠ This is owner-only command! ⚠**\n" +
-        "`info` - Get info about bot\n" +
-        `\`invite\` - Get invite to join ${config.mainServer.name}.\n` +
-        "`evaljs` - Execute JavaScript code. **⚠ This is owner-only command! ⚠**\n" +
-        "`uptime` - View how long bot is running.\n" +
-        "`version` - View bot version\n" +
-        "`waffle` - Shows a waffle gif.\n" +
-        "`w` - Spam command, use without prefix.\n"))
+            .setDescription(`
+\`ping\` - Get my latency.
+\`join\` - Join a voice channel. Make sure you're in voice channel!
+\`shutdown\` - Shut down the bot. **⚠ This is owner-only command! ⚠**
+\`info\` - Get info about bot
+\`invite\` - Get invite to join ${config.mainServer.name}.
+\`evaljs\` - Execute JavaScript code. **⚠ This is owner-only command! ⚠**
+\`uptime\` - View how long bot is running.
+\`version\` - View bot version
+\`waffle\` - Shows a waffle gif.
+\`w\` - Spam command, use without prefix.`))
     }
 
 
@@ -231,22 +227,16 @@ client.on("message", async message => {
 
 
 
-    if (message.content.toLowerCase().includes(prefix + "shutdown")
-    && process.env.Discord_Restart_Webhook_Token
-    && process.env.Discord_Restart_Webhook_Token2) {
-        if (message.author.id === config.owners.a.Discord.ID
-      || message.author.id === config.owners.b.Discord.ID) {
+    if (message.content.toLowerCase().includes(prefix + "shutdown") && process.env.Discord_Restart_Webhook_Token && process.env.Discord_Restart_Webhook_Token2) {
+        if (message.author.id === config.owners.a.Discord.ID || message.author.id === config.owners.b.Discord.ID) {
             message.channel.send("Shutting down...")
-            new WebhookClient(config.webhooks.restart.a, process.env.Discord_Restart_Webhook_Token).send(
-                `Bot shutting down. Command run by <@${message.author.id}>`)
-            new WebhookClient(config.webhooks.restart.b, process.env.Discord_Restart_Webhook_Token2).send(
-                `Bot shutting down. Command run by <@${message.author.id}>`)
+            new WebhookClient(config.webhooks.restart.a, process.env.Discord_Restart_Webhook_Token).send(`Bot shutting down. Command run by <@${message.author.id}>`)
+            new WebhookClient(config.webhooks.restart.b, process.env.Discord_Restart_Webhook_Token2).send(`Bot shutting down. Command run by <@${message.author.id}>`)
             setTimeout(function() {
-                process.exit()
-            }, 2000)
+              client.destroy()
+            }, 1000)
         }
-        if (message.author.id !== config.owners.a.Discord.ID
-      && message.author.id !== config.owners.b.Discord.ID) {
+        if (message.author.id !== config.owners.a.Discord.ID && message.author.id !== config.owners.b.Discord.ID) {
             message.channel.send("You're not bot owner!!")
         }
     }
@@ -307,8 +297,7 @@ client.on("message", async message => {
             })
         }
         /* eslint-enable no-unused-vars */
-        if (message.author.id !== config.owners.a.Discord.ID
-      && message.author.id !== config.owners.b.Discord.ID) return
+        if (message.author.id !== config.owners.a.Discord.ID && message.author.id !== config.owners.b.Discord.ID) return
         try {
             const code = args.join(" ")
             let evaled = eval(code)
@@ -377,7 +366,7 @@ client.on("message", async message => {
 
 
 
-    if (message.content.toLowerCase().includes("w") && message.channel.name === "spam") {
+    if (message.content.toLowerCase().includes("w")) {
         message.channel.send("w")
     }
 })
@@ -392,6 +381,7 @@ client.on("message", async message => {
 
 
 client.on("messageDelete", async message => {
+  if (message.guild.id === "705523044180820130") return
     client.channels.cache.get("779764436733919323").send(
         "------------------------DELETED MESSAGE------------------------\n" +
     `Author: ${message.author.username}#${message.author.discriminator}\n` +

@@ -1,2 +1,2 @@
-run="sh run.sh"
+run="./run.sh"
 language="nodejs"
