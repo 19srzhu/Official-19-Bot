@@ -143,8 +143,7 @@ client.on("message", async message => {
         message.author.send("Hey there! You ran a command. I cannot send messages" +
       " I don't have permission. Ask server owner or administrator ").then(message => {
             message.delete({ timeout: ms("1m") })
-        })
-    }
+            }
 
 
 
@@ -169,7 +168,7 @@ client.on("message", async message => {
 \`uptime\` - View how long bot is running.
 \`version\` - View bot version
 \`waffle\` - Shows a waffle gif.
-\`w\` - Spam command, use without prefix.`))
+
     }
 
 
@@ -359,15 +358,6 @@ client.on("message", async message => {
 
 
 
-
-
-
-
-
-
-
-    if (message.content.toLowerCase().includes("w")) {
-        message.channel.send("w")
     }
 })
 
