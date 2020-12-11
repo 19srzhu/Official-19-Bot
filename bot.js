@@ -113,8 +113,8 @@ client.on("ready", async () => {
 
 client.on("ready", async () => {
     if (package.main === "bot.js" && process.env.Discord_Restart_Webhook_Token && process.env.Discord_Restart_Webhook_Token2) {
-        new WebhookClient(config.webhooks.restart.a, process.env.Discord_Restart_Webhook_Token).send("Bot online")
-        new WebhookClient(config.webhooks.restart.b, process.env.Discord_Restart_Webhook_Token2).send("Bot online")
+        new WebhookClient(config.webhooks.restart.a, process.env.Discord_Restart_Webhook_Token).send("Bot online :)")
+        new WebhookClient(config.webhooks.restart.b, process.env.Discord_Restart_Webhook_Token2).send("Bot online :)")
     }
 })
 
