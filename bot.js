@@ -168,7 +168,7 @@ client.on("message", async message => {
 \`uptime\` - View how long bot is running.
 \`version\` - View bot version
 \`waffle\` - Shows a waffle gif.
-\`fuckyou\` - no u
+\`bonkyou\` - no u
 
     }
 
@@ -384,5 +384,5 @@ client.on("messageDelete", async message => {
     
     
     
-     if (message.content.toLowerCase().includes(prefix+ "fuckyou"))  {
+     if (message.content.toLowerCase().includes(prefix+ "bonkyou"))  {
          message.channel.send("no u")
