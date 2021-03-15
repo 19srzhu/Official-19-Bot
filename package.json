@@ -24,7 +24,7 @@
   },
   "description": "Made by `19srzhu` and coded by `Filip`",
   "devDependencies": {
-    "eslint": "^7.13.0"
+    "eslint": "^7.22.0"
   },
   "directories": {
     "bin": "",
